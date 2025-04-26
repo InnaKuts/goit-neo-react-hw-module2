@@ -29,6 +29,8 @@ function App() {
 
   const { good, neutral, bad } = feedback;
   const totalFeedback = good + neutral + bad;
+  const positiveFeedback =
+    totalFeedback > 0 ? Math.round((good / totalFeedback) * 100) : 0;
 
   return (
     <div className="app">
@@ -48,6 +50,7 @@ function App() {
           neutral={neutral}
           bad={bad}
           total={totalFeedback}
+          positive={positiveFeedback}
         />
       ) : (
         <Notification message="No feedback yet" />

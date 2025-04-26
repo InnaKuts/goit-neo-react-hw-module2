@@ -1,8 +1,6 @@
 import styles from "./Feedback.module.css";
 
-function Feedback({ good, neutral, bad, total }) {
-  const positive = total ? Math.round((good / total) * 100) : 0;
-
+function Feedback({ good, neutral, bad, total, positive }) {
   return (
     <div className={styles.container}>
       <p className={styles.item}>Good: {good}</p>
