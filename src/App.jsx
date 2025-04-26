@@ -11,13 +11,20 @@ function App() {
     bad: 0,
   });
 
+  const updateFeedback = (feedbackType) => {
+    setFeedback((prevFeedback) => ({
+      ...prevFeedback,
+      [feedbackType]: prevFeedback[feedbackType] + 1,
+    }));
+  };
+
   return (
     <div className="app">
       <Description
         title="Sip Happens Café"
         description="Please leave your feedback about our service by selecting one of the options below."
       />
-      <Options />
+      <Options updateFeedback={updateFeedback} />
       <Feedback
         good={feedback.good}
         neutral={feedback.neutral}
