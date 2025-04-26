@@ -2,6 +2,7 @@ import { useState } from "react";
 import Description from "./components/Description/Description";
 import Options from "./components/Options/Options";
 import Feedback from "./components/Feedback/Feedback";
+import Notification from "./components/Notification/Notification";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
     }));
   };
 
+  const { good, neutral, bad } = feedback;
+  const totalFeedback = good + neutral + bad;
+
   return (
     <div className="app">
       <Description
@@ -25,11 +29,17 @@ function App() {
         description="Please leave your feedback about our service by selecting one of the options below."
       />
       <Options updateFeedback={updateFeedback} />
-      <Feedback
-        good={feedback.good}
-        neutral={feedback.neutral}
-        bad={feedback.bad}
-      />
+
+      {totalFeedback > 0 ? (
+        <Feedback
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={totalFeedback}
+        />
+      ) : (
+        <Notification message="No feedback yet" />
+      )}
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import styles from "./Feedback.module.css";
 
-function Feedback({ good, neutral, bad }) {
-  const total = good + neutral + bad;
+function Feedback({ good, neutral, bad, total }) {
   const positive = total ? Math.round((good / total) * 100) : 0;
 
   return (
